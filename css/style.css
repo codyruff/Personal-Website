@@ -1,0 +1,234 @@
+/* 
+
+I used more tools than we have discussed in class but you can see all my descriptions for what each thing does
+I wanted to have a more visually appealing website that fit the vision I had in my mind as this is my personal portfolio 
+and started it before this class and i want it to look nice for the future after this class.
+Also got my image off of pixabay
+
+also used an example email as i don't particularly enjoy the idea of just throwing my email out there. 
+I would rather have a contact box or a seperate email setup but I don't.
+*/
+
+:root {
+  /* earth tones template i copied from ai the palletes i had before were terrible */
+  --tan: #eae4d1;        /* Light creamy beige background */
+  --beige: #f5f0e3;      /* Off-white/off-tan for cards/sections */
+  --dark-tan: #b48156;   /* Warm mid-brown for headers/cards */
+
+  /* Earthy Browns & Oranges */
+  --brown: #735335;      /* Deep rich brown (your original) */
+  --cognac: #a67c52;     /* Warm camel/cognac accent */
+  --terracotta: #c97b5e; /* Burnt orange-clay for highlights */
+
+  /* Nature Greens */
+  --olive-green: #8f7438; /* Muted olive (your original) */
+  --sage: #a8b58a;        /* Soft sage for subtle accents */
+  --forest: #6b7e4f;      /* Deeper green for depth */
+
+  /* Purple Accent (kept, fits earthy jewel tone) */
+  --purple: #724caf;     /* Your purple, pairs well with earth tones */
+
+  /* Text & Borders */
+  --text-dark: #3a2f27;  /* Dark brown-gray for body text */
+  --text-light: #5d4a3a; /* Mid-gray for secondary text */
+}
+
+
+body {
+  width: 95vw; 
+  margin: 20px auto;
+  background-color: var(--tan);
+  font-family: Arial, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in width calculations */
+  
+  background-image: linear-gradient(rgba(234, 228, 209, 0.6), rgba(234, 228, 209, 0.6)), url('../assets/fall_bckgrnd.jpg');
+  /* linear gradient of same color to darken the image and make text more readable */
+  background-size: cover;      /* scales to fill viewport without distortion */
+  background-position: center; /* centers the focal point */
+  background-attachment: fixed; /* still image doesn't scroll with content */
+  background-repeat: no-repeat; /* prevents repeating of background image to fill viewport */
+}
+
+header {
+  background-color: var(--dark-tan);
+  color: var(--beige);
+  padding: 20px 0;
+  text-align: center;
+  border-radius: 8px; /* rounded corners */
+  margin-bottom: 20px;
+}
+
+/* link styles */
+a {
+  color: var(--beige);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--purple);
+  text-decoration: underline;
+}
+
+nav a {
+  margin: 0 15px; /* need some horizontal spacing between nav links */
+}
+
+.contact a {
+  color: var(--text-dark);
+}
+
+.contact a:hover,
+.contact a:focus {
+  color: var(--purple);
+}
+
+.italic-text { 
+  font-style: italic;
+}
+
+/* About Grid Section */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;  /* Image 1/3 width, text 2/3 */
+  gap: 30px;                       /* Space between image & text */
+  margin-top: 20px;
+}
+
+.about-image {
+  display: flex;   /* handles image centering and scaling within its grid cell*/
+  align-items: center; /* vertically center the image */
+  justify-content: center; /* horizontally center the image */
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto; /* avoid image distortion and maintain aspect ratio*/
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(115, 83, 53, 0.3);  /* shadow was unnecessary but cool thing i found */
+  border: 3px solid var(--cognac);
+}
+
+.about-text {
+  display: flex; /* flex column for text content */
+  flex-direction: column;
+  gap: 12px; /* handles margins between paragraphs */
+  background-color: var(--beige);  
+  padding: 24px; /* inner padding for text content */
+  border-radius: 12px;
+  border: 2px solid var(--cognac);  
+  box-shadow: 0 8px 20px rgba(115, 83, 53, 0.3);  /* same as image shadow */
+}
+
+.about-text p {
+  margin: 0;
+}
+
+/* media query to create vertical stack if screen too small */ 
+@media (max-width: 768px) { /* adjusts to stacked column if viewport width less than 768px */
+  .about-grid {
+    grid-template-columns: 1fr;  /* single column on small screens */
+    gap: 20px;
+  }
+}
+
+/* Horizontal Projects Flex Scroll */
+.projects-scroll-container {
+  height: clamp(420px, 80vh, 520px);         /* clamps height between 420px min, 80% viewport preferred, max 520px */
+  overflow-x: auto;              /* horizontal scroll enabled */
+  overflow-y: hidden;            /* disable vertical scroll */
+  scroll-behavior: smooth;       /* smooth scrolling */
+  padding: clamp(15px, 3vw, 20px);
+  border: 2px solid var(--brown);
+  border-radius: 8px;
+  background-color: var(--beige);
+  scrollbar-width: thin;         /* Thin scrollbar (Firefox) */
+}
+
+.projects-list {
+  display: flex;                 /* flexbox row is default */
+  flex-wrap: nowrap;             /* no wrapping */
+  gap: clamp(15px, 3vw, 20px);   /* space between cards using clamp */
+  height: 100%;
+  padding: 0 clamp(15px, 3vw, 20px);               /* edge padding responsive with clamp */
+}
+
+.projects-list::after {
+  content: "";                   /* empty element just need padding */
+  background-color: var(--beige);              
+  padding-right: 20px;               /* space for padding after end of cards list */
+}
+
+.project-card {
+  display: flex;          /* flex column for image + text */
+  flex-direction: column; /* stack image + text vertically */
+  flex: 0 0 35vw;           /* 35% width: 2.5 cards per view */  
+  min-width: 250px;        /* minimum width to prevent cards from getting too small as long as its less than 75% of the viewport */
+  max-width: 75vw;          /* max width to prevent cards from getting too large on very small screens */
+  
+  height: clamp(380px, 90vh, 480px);     /* responsive height: 380px min, 90% viewport preferred, max 480px */
+  overflow-y: auto;                      /* enable vertical scroll if content overflows */
+  background-color: var(--dark-tan);
+  border-radius: 8px;
+  padding: clamp(12px, 3vh, 16px);          /* inner padding for content inside card from edges of card */
+  gap: 8px;
+  box-sizing: border-box; /* include padding in width/height calculations since i dont want the card 
+                          details touching the edge of card container include that padding in total card size*/
+}
+
+.project-image-placeholder {
+  flex: none; 
+  height: clamp(100px, 30vh, 120px);     /* 100px min, 30% viewport preferred, max 120px */
+  background-color: var(--forest);
+  border-radius: 6px;
+  border: 2px solid var(--text-dark);
+}
+
+.project-card h3 {
+  font-size: clamp(1rem, 4vw, 1.2rem);  /* scales 1-1.2rem with 4% viewport  as the preferred size */
+  margin: 0;  /* remove default margin since cards are smaller and need to fit text more tightly*/
+  color: var(--brown);
+}
+
+.project-card p {
+  font-size: clamp(0.8rem, 3vw, 0.95rem); /* same as before just smaller text for paragraphs */
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* resume grid styling */
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr;  /* Single column layout */
+  margin-top: 20px; /* space above resume section */
+
+}
+
+.resume-text{
+  display: flex; /* flex column for text content */
+  flex-direction: column;
+  gap: 10px; /* handles margins between paragraphs */
+  background-color: var(--beige);  
+  padding: 24px; /* inner padding for text content */
+  border-radius: 12px;
+  border: 2px solid var(--cognac);  
+  box-shadow: 0 8px 20px rgba(115, 83, 53, 0.3);  /* same as image shadow */
+
+}
+
+.resume-text h2 {
+  padding: 0px;
+  margin: 15px 0 0 0; /* top margin for spacing, no bottom margin since gap handles that */
+}
+
+.resume-text p { /* paragraphs closer to their headers */
+  margin: 0;
+}
+
+.resume-text .top-text {
+  margin-top: 0; /* remove top margin from first paragraph since there's nothing above it */
+}
