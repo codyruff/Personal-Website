@@ -1,27 +1,18 @@
-/* 
 
-I used more tools than we have discussed in class but you can see all my descriptions for what each thing does
-I wanted to have a more visually appealing website that fit the vision I had in my mind as this is my personal portfolio 
-and started it before this class and i want it to look nice for the future after this class.
-Also got my image off of pixabay
 
-also used an example email as i don't particularly enjoy the idea of just throwing my email out there. 
-I would rather have a contact box or a seperate email setup but I don't.
-*/
-
-:root {
-  /* earth tones template i copied from ai the palletes i had before were terrible */
+:root { 
+   /* Earthy Neutrals */
   --tan: #eae4d1;        /* Light creamy beige background */
   --beige: #f5f0e3;      /* Off-white/off-tan for cards/sections */
   --dark-tan: #b48156;   /* Warm mid-brown for headers/cards */
 
   /* Earthy Browns & Oranges */
-  --brown: #735335;      /* Deep rich brown (your original) */
+  --brown: #735335;      /* Deep rich brown */
   --cognac: #a67c52;     /* Warm camel/cognac accent */
   --terracotta: #c97b5e; /* Burnt orange-clay for highlights */
 
   /* Nature Greens */
-  --olive-green: #8f7438; /* Muted olive (your original) */
+  --olive-green: #8f7438; /* Muted olive */
   --sage: #a8b58a;        /* Soft sage for subtle accents */
   --forest: #6b7e4f;      /* Deeper green for depth */
 
@@ -146,7 +137,6 @@ nav a {
   border: 2px solid var(--brown);
   border-radius: 8px;
   background-color: var(--beige);
-  scrollbar-width: thin;         /* Thin scrollbar (Firefox) */
 }
 
 .projects-list {
